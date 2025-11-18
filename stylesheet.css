@@ -1,0 +1,163 @@
+:root {
+    --color-back: #000;
+    --color-back1: #27232f;
+    --border: 4px ridge var(--color-back1);
+    --color-text: #bcabe1;
+    --color-accent: #bf83e8;
+    --font-family: "Fantasque Sans Mono", monospace
+}
+
+
+nav {
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav li {
+    display: inline-block;
+}
+
+pre {
+    justify-content: left;
+    font-family: var(--font-family);
+    overflow: auto;
+    line-height: calc(100%);
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    padding: 0px;
+    margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 6px;
+}
+
+a {
+    color: var(--color-accent);
+}
+
+::selection, a:hover {
+    color: var(--color-back);
+    background: var(--color-accent);
+}
+
+.small-text {
+    font-size: 12px;
+}
+
+.overlay {
+    z-index: 9;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100%;
+    pointer-events: none;
+    
+    background: url(./assets/overlay.png);
+    background-repeat: repeat;
+}
+
+.overlay-anim {
+    animation: scrolling 20s linear 1; 
+    animation-direction: forward;
+    animation-iteration-count: infinite
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    letter-spacing: -0.6px;
+    line-height: calc(100% - 2px);
+    padding: 0px 20%;
+    font-family: var(--font-family);
+    font-size: 16px;
+    color: var(--color-text);
+    background-color: var(--color-back);
+    background-image: url("./assets/stars.png");
+    background-size: 256px;
+    image-rendering: pixelated;
+}
+
+.box {
+    border: var(--border);
+    border-image: url("./assets/borders/border0.png") 20 round;
+    background-color: var(--color-back);
+    padding: 16px;
+    margin: 4px;
+}
+
+.box-title {
+    display: inline-flex;
+    position: absolute;
+    margin-top: -24px;
+    padding: 0px;
+    background-color: var(--color-back);
+}
+
+.sidebar {
+    min-width: 25%;
+    height: 100%;
+}
+
+code {
+    font-family: var(--font-family);
+    padding: 0px 8px;
+    background-color: var(--color-back1);
+}
+
+.cursor {
+    animation: blink 1s steps(1) 1;
+    animation-iteration-count: infinite;
+    overflow: visible;
+    user-select: all;
+}
+
+.cursor::after {
+    content: "\a\a\a\a\a\a  ███████\a░░░░░░░";
+    white-space: pre-wrap;
+    user-select: all;
+}
+
+.figlet-header {
+    overflow: visible;
+}
+
+@media only screen and (max-width: 800px) {
+    main {
+        flex-direction: column;
+    }
+
+    body {
+        padding: 0% 0%;
+    }
+
+    .figlet-header, .cursor {
+        display: none;
+    }
+}
+
+@keyframes scrolling {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -300px 300px;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
